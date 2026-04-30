@@ -1,0 +1,70 @@
+@mixin text-primary-regular {
+  color: $color-text-primary;
+  font-weight: 400;
+}
+
+@mixin text-primary-medium {
+  color: $color-text-primary;
+  font-weight: 500;
+}
+
+@mixin text-primary-bold {
+  color: $color-text-primary;
+  font-weight: 700;
+}
+
+@mixin text-secondary-regular {
+  color: $color-text-secondary;
+  font-weight: 400;
+}
+
+@mixin text-secondary-medium {
+  color: $color-text-secondary;
+  font-weight: 500;
+}
+
+@mixin text-secondary-bold {
+  color: $color-text-secondary;
+  font-weight: 700;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin separator {
+  width: 100%;
+  height: 1px;
+  background-color: #e2e8f0b5;
+}
+
+@mixin warning {
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $color-warning-text;
+  width: max-content;
+  max-width: 100%;
+  background-color: $color-warning-background;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  border: 1px solid $color-warning-border;
+  border-radius: 4px;
+  box-shadow: $shadow-default;
+}
+
+@mixin author-name {
+  @include text-primary-medium;
+  @include ellipsis;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}

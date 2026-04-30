@@ -1,12 +1,9 @@
 <script setup lang="ts">
+import CommunicationCenter from './features/communication-center/CommunicationCenter.vue'
 </script>
 
 <template>
-  <div class="bs-communications-center">
-
-  </div>
+  <CommunicationCenter />
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
