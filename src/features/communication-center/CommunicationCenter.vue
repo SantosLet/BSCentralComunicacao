@@ -37,17 +37,21 @@ const communicationStore = useCommunicationStore()
   overflow: hidden;
   background-color: $color-bg-white;
 
-  @media (min-width: $breakpoint-lg) {
+  @media (min-width: $breakpoint-sm) {
     display: grid;
-    grid-template-columns: 18rem minmax(0, 1fr);
+    grid-template-columns: 16rem minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr);
+  }
+
+  @media (min-width: $breakpoint-md) {
+     grid-template-columns: 18rem minmax(0, 1fr);
   }
 }
 
 .desktop-sidebar {
   display: none;
 
-  @media (min-width: $breakpoint-lg) {
+  @media (min-width: $breakpoint-sm) {
     display: block;
     min-height: 0;
   }
@@ -57,11 +61,11 @@ const communicationStore = useCommunicationStore()
   position: absolute;
   inset: 0 auto 0 0;
   z-index: 30;
-  width: 18rem;
+  width: 100%;
   height: 100vh;
   background-color: $color-bg-white;
 
-  @media (min-width: $breakpoint-lg) {
+  @media (min-width: $breakpoint-sm) {
     display: none;
   }
 }
@@ -72,7 +76,7 @@ const communicationStore = useCommunicationStore()
   z-index: 20;
   background-color: rgba(15, 23, 42, 0.35);
 
-  @media (min-width: $breakpoint-lg) {
+  @media (min-width: $breakpoint-sm) {
     display: none;
   }
 }
