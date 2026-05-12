@@ -19,28 +19,30 @@ const archiveButtonIconAlt = computed(() => {
 
 <template>
   <div v-if="selectedConversation" class="header-info-contact">
-    <button
-      type="button"
-      class="open-sidebar-button"
-      aria-label="Abrir conversas"
-      @click="communicationStore.openMobileSidebar"
-    >
-      <img src="/icons/menu_icon_gray.svg" alt="Ícone Menu" />
-    </button>
+    <div class="contact-info-btn-back">
+      <button
+        type="button"
+        class="open-sidebar-button"
+        aria-label="Abrir conversas"
+        @click="communicationStore.openMobileSidebar"
+      >
+        <img src="/icons/chevron_left_icon_gray.svg" alt="Voltar para conversas" />
+      </button>
 
-    <div class="contact-info">
-      <div class="profile-picture">
-        <img
-          class="picture"
-          :src="selectedConversation.participant.avatarUrl"
-          :alt="`Foto de ${selectedConversation.participant.name}`"
-        />
-      </div>
+      <div class="contact-info">
+        <div class="profile-picture">
+          <img
+            class="picture"
+            :src="selectedConversation.participant.avatarUrl"
+            :alt="`Foto de ${selectedConversation.participant.name}`"
+          />
+        </div>
 
-      <div class="contact-text">
-        <p class="author-name">
-          {{ selectedConversation.participant.name }}
-        </p>
+        <div class="contact-text">
+          <p class="author-name">
+            {{ selectedConversation.participant.name }}
+          </p>
+        </div>
       </div>
     </div>
 
@@ -66,6 +68,12 @@ const archiveButtonIconAlt = computed(() => {
   padding: 0 1rem;
   border-bottom: 1px solid $color-border;
 
+  .contact-info-btn-back {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .open-sidebar-button {
     @include center;
     height: 2.25rem;
@@ -73,7 +81,7 @@ const archiveButtonIconAlt = computed(() => {
     background-color: $color-bg-white;
     flex-shrink: 0;
     padding: 0;
-    border: 1px solid $color-border;
+    border: none;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: background-color 250ms ease;
@@ -82,7 +90,7 @@ const archiveButtonIconAlt = computed(() => {
       background-color: #f4f4f4;
     }
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $breakpoint-sm) {
       display: none;
     }
 

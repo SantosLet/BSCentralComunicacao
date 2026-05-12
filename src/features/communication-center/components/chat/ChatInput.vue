@@ -16,27 +16,52 @@ const canSendMessage = computed(() => {
   return communicationStore.draftMessage.trim().length > 0
 })
 
+function resizeTextarea(textarea: HTMLTextAreaElement) {
+  textarea.style.height = 'auto'
+  textarea.style.height = `${textarea.scrollHeight}px`
+}
+
+function resetTextarea(textarea: HTMLTextAreaElement) {
+  textarea.style.height = 'auto'
+}
+
 function handleInput(event: Event) {
   const target = event.target as HTMLTextAreaElement
 
   communicationStore.setDraftMessage(target.value)
+  resizeTextarea(target)
 }
 
 function handleKeydown(event: KeyboardEvent) {
   if (event.key !== 'Enter') return
-  if (event.shiftKey) return
+
+  const target = event.target as HTMLTextAreaElement
+
+  if (event.shiftKey) {
+    resizeTextarea(target)
+    return
+  }
 
   event.preventDefault()
 
   if (!canSendMessage.value) return
 
   communicationStore.sendMessage()
+  resetTextarea(target)
 }
 
-function handleSendMessage() {
+function handleSendMessage(event: MouseEvent) {
   if (!canSendMessage.value) return
 
   communicationStore.sendMessage()
+
+  const button = event.currentTarget as HTMLButtonElement
+  const messageBar = button.closest('.message-bar')
+  const textarea = messageBar?.querySelector('textarea')
+
+  if (textarea) {
+    resetTextarea(textarea)
+  }
 }
 </script>
 
@@ -65,7 +90,7 @@ function handleSendMessage() {
     </div>
 
     <small>
-      <span :class="{ 'is-limit': isAtLimit }"> {{ characterCount }}/2000 caracteres </span>
+      <span :class="{ 'is-limit': isAtLimit }">{{ characterCount }}/2000 caracteres</span>
       | Shift + Enter para adicionar uma nova linha
     </small>
   </div>
@@ -107,7 +132,9 @@ function handleSendMessage() {
       textarea {
         width: 100% !important;
         min-width: 0;
+        min-height: 1.25rem;
         max-height: 5rem;
+        overflow-y: auto;
         background-color: transparent;
         color: $color-text-primary;
         font-family: inherit;

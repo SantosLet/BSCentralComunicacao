@@ -201,7 +201,7 @@ onMounted(() => {
   grid-template-columns: 28px minmax(0, 1fr);
   gap: 0.75rem;
   width: fit-content;
-  max-width: min(70%, 42rem);
+  max-width: min(72%, 42rem);
 
   .profile-picture {
     height: 28px;

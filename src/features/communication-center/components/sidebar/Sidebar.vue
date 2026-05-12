@@ -31,7 +31,7 @@ const communicationStore = useCommunicationStore()
 .sidebar-messages {
   position: relative;
   height: 100vh;
-  width: 18rem;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 5rem max-content minmax(0, 1fr);
